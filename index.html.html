@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact Us - Samudera</title>
+<style>
+  :root{
+    --sam-red:#D0102A;
+    --sam-red-dark:#B00D24;
+    --sam-yellow:#F5B914;
+    --text-dark:#1A1A2E;
+    --text-muted:#6b7280;
+    --border:#d9dbe0;
+    --bg-page:#f4f4f5;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:Georgia, 'Times New Roman', serif;
+    background:var(--bg-page);
+    color:var(--text-dark);
+  }
+  .navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#fff;
+    padding:14px 40px;
+    border-bottom:1px solid #eee;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;}
+  .brand-mark{
+    width:34px;height:26px;
+    background:repeating-linear-gradient(180deg, var(--sam-red) 0 5px, #fff 5px 10px);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .brand-mark span{background:#fff;padding:0 3px;font-size:16px;font-family:Georgia,serif;font-weight:900;}
+  .nav-links{display:flex;align-items:center;gap:32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;}
+  .nav-links a{color:#1A1A2E;text-decoration:none;}
+  .login-btn{
+    background:var(--sam-yellow);
+    color:#1A1A2E;
+    border:none;
+    padding:10px 18px;
+    border-radius:4px;
+    font-family:Arial,Helvetica,sans-serif;
+    font-weight:600;
+    font-size:14px;
+    cursor:pointer;
+  }
+
+  .page{ max-width:1600px; margin:0 auto; padding:48px 24px; }
+  .card{
+    background:#fff;
+    max-width:1420px;
+    margin:0 auto;
+    padding:44px 48px 40px;
+    border-radius:2px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.06);
+  }
+  .card h1{ font-size:28px; margin:0 0 20px; font-weight:700; }
+  .divider{ border:none; border-top:1px solid #e5e5e5; margin:0 0 30px; }
+
+  form{font-family:Arial, Helvetica, sans-serif;}
+  .field{margin-bottom:22px;}
+  .row{display:flex;gap:24px;}
+  .row .field{flex:1;}
+  label{
+    display:block;
+    font-weight:700;
+    font-size:15px;
+    margin-bottom:8px;
+    color:#1A1A2E;
+  }
+  label .req{color:var(--sam-red);}
+
+  input[type=text],
+  input[type=email],
+  textarea{
+    width:100%;
+    padding:12px 14px;
+    font-size:15px;
+    border:1px solid var(--border);
+    border-radius:4px;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#1A1A2E;
+    background:#fff;
+  }
+  input::placeholder{color:#9aa0aa;}
+  textarea{min-height:150px;resize:vertical;}
+
+  input:focus, textarea:focus{
+    outline:none;
+    border-color:var(--sam-red);
+    box-shadow:0 0 0 3px rgba(208,16,42,0.12);
+  }
+
+  .error-text{
+    color:var(--sam-red);
+    font-size:13px;
+    margin-top:6px;
+    display:none;
+  }
+  .field.invalid input,
+  .field.invalid textarea{ border-color:var(--sam-red); }
+  .field.invalid .error-text{display:block;}
+
+  .recaptcha-wrap{margin-bottom:24px;}
+
+  .submit-btn{
+    background:var(--sam-red);
+    color:#fff;
+    border:none;
+    padding:13px 30px;
+    font-size:15px;
+    font-weight:700;
+    border-radius:4px;
+    cursor:pointer;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  .submit-btn:hover{background:var(--sam-red-dark);}
+
+  @media(max-width:640px){
+    .navbar{flex-wrap:wrap;gap:12px;padding:14px 20px;}
+    .nav-links{display:none;}
+    .card{padding:28px 20px;}
+    .row{flex-direction:column;gap:0;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="brand">
+      <div class="brand-mark"><span>S</span></div>
+      SAMUDERA
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services ▾</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <button class="login-btn">👤 Login/Register</button>
+  </div>
+
+  <div class="page">
+    <div class="card">
+      <h1>We'd love to hear from you:</h1>
+      <hr class="divider">
+
+      <!--  ----------------------------------------------------------------------  -->
+      <!--  reCAPTCHA script dari Salesforce Web-to-Lead generator                    -->
+      <!--  ----------------------------------------------------------------------  -->
+      <script src="https://www.google.com/recaptcha/api.js"></script>
+      <script>
+        function timestamp() {
+          var response = document.getElementById("g-recaptcha-response");
+          if (response == null || response.value.trim() == "") {
+            var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
+            elems["ts"] = JSON.stringify(new Date().getTime());
+            document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems);
+          }
+        }
+        setInterval(timestamp, 500);
+      </script>
+
+      <!--  ----------------------------------------------------------------------  -->
+      <!--  FORM Web-to-Lead asli, orgId & sitekey dari kode yang kamu berikan        -->
+      <!--  ----------------------------------------------------------------------  -->
+      <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DHu00000Srzsm" method="POST" id="leadForm">
+
+        <input type="hidden" name="captcha_settings" value='{"keyname":"WebToLead","fallback":"true","orgId":"00DHu00000Srzsm","ts":""}'>
+        <input type="hidden" name="oid" value="00DHu00000Srzsm">
+        <input type="hidden" name="retURL" value="http://Google.com">
+        <input type="hidden" id="lead_source" name="lead_source" value="Web">
+
+        <!-- Debug mode: uncomment 2 baris di bawah untuk testing -->
+        <!-- <input type="hidden" name="debug" value="1"> -->
+        <!-- <input type="hidden" name="debugEmail" value="radhitya.indrapratikto@treessolutions.com"> -->
+
+        <div class="row">
+          <div class="field" id="f-first">
+            <label for="first_name">First Name<span class="req">*</span></label>
+            <input type="text" id="first_name" maxlength="40" name="first_name" required>
+            <div class="error-text">Please enter your first name.</div>
+          </div>
+          <div class="field" id="f-last">
+            <label for="last_name">Last Name<span class="req">*</span></label>
+            <input type="text" id="last_name" maxlength="80" name="last_name" required>
+            <div class="error-text">Please enter your last name.</div>
+          </div>
+        </div>
+
+        <div class="field" id="f-email">
+          <label for="email">Email<span class="req">*</span></label>
+          <input type="email" id="email" maxlength="80" name="email" placeholder="email@email.com" required>
+          <div class="error-text">Please enter a valid email address.</div>
+        </div>
+
+        <div class="row">
+          <div class="field" id="f-company">
+            <label for="company">Company<span class="req">*</span></label>
+            <input type="text" id="company" maxlength="40" name="company" required>
+            <div class="error-text">Please enter your company name.</div>
+          </div>
+          <div class="field" id="f-city">
+            <label for="city">City</label>
+            <input type="text" id="city" maxlength="40" name="city">
+          </div>
+          <div class="field" id="f-state">
+            <label for="state">State/Province</label>
+            <input type="text" id="state" maxlength="20" name="state">
+          </div>
+        </div>
+
+        <div class="field" id="f-message">
+          <label for="description">Message<span class="req">*</span></label>
+          <textarea id="description" name="description" required></textarea>
+          <div class="error-text">Please enter your message.</div>
+        </div>
+
+        <div class="recaptcha-wrap">
+          <div class="g-recaptcha" data-sitekey="6Lenfl0tAAAAAJwxTfre70VosFEQ39G0epti_eam"></div>
+        </div>
+
+        <button type="submit" class="submit-btn" name="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+<script>
+  // Validasi ringan di sisi client sebelum form di-submit langsung ke Salesforce.
+  // Form ini POST langsung (bukan fetch/AJAX) karena reCAPTCHA + redirect (retURL)
+  // Salesforce didesain untuk direct form submission, bukan untuk dibaca via JS.
+  document.getElementById('leadForm').addEventListener('submit', function(e){
+    var requiredFields = [
+      ['f-first', 'first_name'],
+      ['f-last', 'last_name'],
+      ['f-email', 'email'],
+      ['f-company', 'company'],
+      ['f-message', 'description']
+    ];
+    var valid = true;
+
+    requiredFields.forEach(function(pair){
+      var wrap = document.getElementById(pair[0]);
+      var input = document.getElementsByName(pair[1])[0];
+      var isEmpty = input.value.trim() === '';
+      var isBadEmail = pair[1] === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+      var invalid = isEmpty || isBadEmail;
+      wrap.classList.toggle('invalid', invalid);
+      if(invalid) valid = false;
+    });
+
+    if(!valid){
+      e.preventDefault();
+    }
+    // Kalau valid, form akan submit apa adanya ke Salesforce (termasuk validasi reCAPTCHA-nya sendiri).
+  });
+</script>
+
+</body>
+</html>
